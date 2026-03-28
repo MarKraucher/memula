@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/marek/Documents/claude-code/**)",
+      "Bash(npx create-next-app@latest memula --typescript --tailwind --eslint --app --src-dir --no-import-alias)",
+      "Bash(npx create-next-app@latest memula --typescript --tailwind --eslint --app --src-dir --no-import-alias --turbopack)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Read(//c/Users/marek/AppData/Local/Temp/claude/c--Users-marek-Documents-claude-code-memula/87502305-7918-466f-be86-c0da5c14f268/tasks/**)",
+      "Bash(npm ls:*)",
+      "Bash(timeout 15 npx next dev --turbopack)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh auth:*)",
+      "Bash(where gh:*)",
+      "Bash(winget install:*)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\")",
+      "Bash(gh --version)",
+      "Bash(git config:*)"
+    ]
+  }
+}
