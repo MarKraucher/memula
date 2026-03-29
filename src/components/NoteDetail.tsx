@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { ContentType } from "@/types/note";
+import { AiSuggestions } from "./AiSuggestions";
 
 interface NoteDetailProps {
   note: {
@@ -22,9 +23,10 @@ interface NoteDetailProps {
       categories: { id: string; name: string; icon: string | null };
     }>;
   };
+  onUpdate: () => void;
 }
 
-export function NoteDetail({ note }: NoteDetailProps) {
+export function NoteDetail({ note, onUpdate }: NoteDetailProps) {
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
 
@@ -91,6 +93,23 @@ export function NoteDetail({ note }: NoteDetailProps) {
           </span>
         ))}
       </div>
+
+      {/* AI Suggestions */}
+      <AiSuggestions
+        noteId={note.id}
+        suggestedTags={note.note_tags.map((nt) => ({
+          id: nt.tags.id,
+          name: nt.tags.name,
+          is_ai_suggested: (nt as any).is_ai_suggested ?? false,
+        }))}
+        suggestedCategories={note.note_categories.map((nc) => ({
+          id: nc.categories.id,
+          name: nc.categories.name,
+          icon: nc.categories.icon,
+          is_ai_suggested: (nc as any).is_ai_suggested ?? false,
+        }))}
+        onUpdate={onUpdate}
+      />
 
       {/* Source URL */}
       {note.source_url && (

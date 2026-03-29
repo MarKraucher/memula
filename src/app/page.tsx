@@ -73,6 +73,29 @@ export default function DashboardPage() {
     setCounts(c);
   }, [notes]);
 
+  // Auto-trigger processing for pending notes
+  useEffect(() => {
+    if (!notes.length) return;
+
+    const pendingNotes = notes.filter((n: any) => n.status === "pending");
+    for (const note of pendingNotes) {
+      fetch(`/api/notes/${note.id}/process`, { method: "POST" })
+        .then(() => fetchNotes())
+        .catch(() => {});
+    }
+  }, [notes, fetchNotes]);
+
+  // Poll for processing updates every 5 seconds
+  useEffect(() => {
+    const hasProcessing = notes.some(
+      (n: any) => n.status === "pending" || n.status === "processing"
+    );
+    if (!hasProcessing) return;
+
+    const interval = setInterval(fetchNotes, 5000);
+    return () => clearInterval(interval);
+  }, [notes, fetchNotes]);
+
   if (authLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center text-gray-400">

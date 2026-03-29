@@ -38,3 +38,13 @@ export interface Category {
   color: string | null;
   user_id: string | null;
 }
+
+export interface AiClassificationResult {
+  content_type: ContentType;
+  title: string;
+  summary: string;
+  structured_data: Record<string, unknown>;
+  suggested_tags: string[];
+  suggested_categories: string[];
+  language: string;
+}
