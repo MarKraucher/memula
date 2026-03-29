@@ -17,7 +17,16 @@
       "Bash(winget install:*)",
       "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\")",
       "Bash(gh --version)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(gh repo:*)",
+      "Bash(git checkout:*)",
+      "Bash(npx vitest:*)",
+      "Bash(npm run:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\marek\\Documents\\claude-code\\memula\\src\\app\\auth",
+      "C:\\Users\\marek\\Documents\\claude-code\\memula\\src\\app\\api\\notes",
+      "C:\\Users\\marek\\Documents\\claude-code\\memula\\src\\app\\notes\\[id]"
     ]
   }
 }
