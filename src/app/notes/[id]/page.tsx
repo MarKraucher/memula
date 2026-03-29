@@ -42,5 +42,11 @@ export default function NoteDetailPage() {
     );
   }
 
-  return <NoteDetail note={note} />;
+  function refetchNote() {
+    fetch(`/api/notes/${params.id}`)
+      .then((r) => r.json())
+      .then((data) => setNote(data));
+  }
+
+  return <NoteDetail note={note} onUpdate={refetchNote} />;
 }

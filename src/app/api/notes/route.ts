@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
     .insert({
       ...noteData,
       user_id: auth.user.id,
-      status: noteData.source_url ? "pending" : "ready",
+      status: "pending",
     })
     .select()
     .single();

@@ -17,8 +17,8 @@ export async function GET(
     .from("notes")
     .select(`
       *,
-      note_tags(tag_id, tags(id, name)),
-      note_categories(category_id, categories(id, name, icon)),
+      note_tags(tag_id, is_ai_suggested, tags(id, name)),
+      note_categories(category_id, is_ai_suggested, categories(id, name, icon)),
       note_images(id, storage_path, is_primary)
     `)
     .eq("id", id)
